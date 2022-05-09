@@ -20,7 +20,8 @@ pipeline {
     }
     stage('check failure in console ') {
       steps {
-        getContext "${BUILD_URL}/consoleText"
+        echo "${BUILD_URL}/consoleText"
+        archive "${BUILD_URL}/consoleText"
       }
     }
   }
