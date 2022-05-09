@@ -24,21 +24,11 @@ pipeline {
         sh "curl ${BUILD_URL}/consoleText -o console.txt"
       }
     }
-    stage('capture console output') {
+    stage('CheckLog') {
       steps {
-        script {
-          def directory = "${env.WORKSPACE}/read_console" // change name here
-          def logContent = Jenkins.getInstance().getItemByFullName(env.JOB_NAME).getBuildByNumber(Integer.parseInt(env.BUILD_NUMBER)).logFile.text
-          // copy the log in the job's own workspace
-          writeFile file: directory + "/buildConsolelog.txt",
-          text: logContent
-          def consoleOutput = readFile directory + '/buildConsolelog.txt'
-          echo 'Console output saved in the buildConsolelog file'
-          echo '--------------------------------------'
-          echo consoleOutput
-          echo '--------------------------------------'
+        if (manager.logContains('.*myTestString.*')) {
+          error("Build failed because of this and that..")    
         }
       }
-    }
   }
 }
