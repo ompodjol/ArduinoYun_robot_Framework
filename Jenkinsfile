@@ -27,7 +27,7 @@ pipeline {
     stage('CheckLog') {
       steps {
         script {
-          sh('/opt/homebrew/bin/wget -q --no-check-certificate -O build.log ' + BUILD_URL + 'consoleText')
+          sh "/opt/homebrew/bin/wget -q --no-check-certificate -O build.log $BUILD_URL/consoleText"
         }
       }
     }
