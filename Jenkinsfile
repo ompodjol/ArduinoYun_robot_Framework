@@ -21,8 +21,15 @@ pipeline {
     stage('check failure in console ') {
       steps {
         script {
-          def response=${BUILD_URL}/consoleText
-          echo "$response"
+          // publish html
+        publishHTML target: [
+            allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: true,
+            reportDir: 'coverage',
+            reportFiles: 'index.html',
+            reportName: 'RCov Report'
+          ]
         }
       }
     }
