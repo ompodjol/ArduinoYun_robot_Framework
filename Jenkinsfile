@@ -29,7 +29,6 @@ pipeline {
       steps {
         script {
           echo currentBuild.rawBuild.getLog(10)
-          }
         }
       }
     }
