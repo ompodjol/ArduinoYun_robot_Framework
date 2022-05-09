@@ -21,7 +21,7 @@ pipeline {
     stage('check failure in console ') {
       steps {
         script {
-          sh 'curl ${BUILD_URL}/consoleText -o console_output.txt'
+          sh 'wget ${BUILD_URL}/consoleText'
         }
       }
     }
