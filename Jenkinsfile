@@ -32,12 +32,12 @@ pipeline {
           // copy the log in the job's own workspace
           writeFile file: directory + "/buildConsolelog.txt",
           text: logContent
+          def consoleOutput = readFile directory + '/buildConsolelog.txt'
+          echo 'Console output saved in the buildConsolelog file'
+          echo '--------------------------------------'
+          echo consoleOutput
+          echo '--------------------------------------'
         }
-        def consoleOutput = readFile directory + '/buildConsolelog.txt'
-        echo 'Console output saved in the buildConsolelog file'
-        echo '--------------------------------------'
-        echo consoleOutput
-        echo '--------------------------------------'
       }
     }
   }
