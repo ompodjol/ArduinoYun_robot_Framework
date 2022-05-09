@@ -20,7 +20,7 @@ pipeline {
     }
     stage('check failure in console ') {
       steps {
-        readFile "${BUILD_URL}/consoleText"
+        sh "cat ${BUILD_URL}/consoleText > console_output.txt"
       }
     }
   }
