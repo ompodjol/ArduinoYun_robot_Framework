@@ -22,12 +22,13 @@ pipeline {
     stage('check failure in console ') {
       steps {
         echo "${BUILD_URL}/consoleText"
-        sh "curl ${BUILD_URL}/consoleText -o console.txt"
       }
     }
     stage('CheckLog') {
       steps {
-          echo currentBuild.rawBuild.getLog(10)
+        script {
+          sh('wget -q --no-check-certificate -O build.log ' + BUILD_URL + 'consoleText')
+        }
       }
     }
   }
