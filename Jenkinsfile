@@ -20,16 +20,7 @@ pipeline {
     }
     stage('check failure in console ') {
       steps {
-
-        publishHTML target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: false,
-            keepAll: true,
-            reportDir: 'coverage',
-            reportFiles: 'index.html',
-            reportName: 'RCov Report'
-          ]
-
+        sh 'wget ${BUILD_URL}/consoleText'
       }
     }
   }
