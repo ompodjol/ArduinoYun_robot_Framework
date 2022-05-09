@@ -21,7 +21,8 @@ pipeline {
     stage('check failure in console ') {
       steps {
         script {
-          def response = sh 'curl ${BUILD_URL}/consoleText'
+          def response=${BUILD_URL}/consoleText
+          echo "$response"
         }
       }
     }
