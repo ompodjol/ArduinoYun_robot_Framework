@@ -7,7 +7,14 @@ pipeline {
     stage('read env') {
       steps {
         script {
-          sh 'echo "Hello Xan Isaac Razo Ompod!"'
+          echo sh(script: 'env|sort', returnStdout: true)
+        }
+      }
+    }
+    stage('build') {
+      steps {
+        script {
+          sh 'make'
         }
       }
     }
