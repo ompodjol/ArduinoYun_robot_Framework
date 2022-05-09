@@ -20,9 +20,7 @@ pipeline {
     }
     stage('check failure in console ') {
       steps {
-        sh 'brew install wget'
-        sleep 10
-        sh "wget ${BUILD_URL}/consoleText"
+        wget "${BUILD_URL}/consoleText"
       }
     }
   }
