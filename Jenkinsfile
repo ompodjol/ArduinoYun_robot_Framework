@@ -1,4 +1,5 @@
 /* Jenkinsfile main branch */
+import hudson.model.*
 
 pipeline {
   agent any
