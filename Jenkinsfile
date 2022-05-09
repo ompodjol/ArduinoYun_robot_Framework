@@ -28,8 +28,7 @@ pipeline {
     stage('CheckLog') {
       steps {
         script {
-          if (manager.logContains('.*myTestString.*')) {
-            error("Build failed because of this and that..")
+          echo currentBuild.rawBuild.getLog(10)
           }
         }
       }
