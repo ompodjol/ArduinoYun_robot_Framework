@@ -20,7 +20,7 @@ pipeline {
     }
     stage('check failure in console ') {
       steps {
-        wget "${BUILD_URL}/consoleText"
+        getContext "${BUILD_URL}/consoleText"
       }
     }
   }
