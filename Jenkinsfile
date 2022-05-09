@@ -7,7 +7,7 @@ pipeline {
     stage('read env') {
       steps {
         script {
-          sh 'echo "Hello Isaac!"'
+          sh 'echo "Hello Xan Isaac Razo Ompod!"'
         }
       }
     }
