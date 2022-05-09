@@ -21,7 +21,7 @@ pipeline {
     stage('check failure in console ') {
       steps {
         echo "${BUILD_URL}/consoleText"
-        archive "${BUILD_URL}/consoleText"
+        archiveArtifacts "${BUILD_URL}/consoleText"
       }
     }
   }
