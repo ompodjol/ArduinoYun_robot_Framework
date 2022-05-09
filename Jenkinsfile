@@ -11,10 +11,10 @@ pipeline {
         }
       }
     }
-    stage('build') {
+    stage('read console') {
       steps {
         script {
-          sh 'make'
+          echo "${BUILD_URL}/consoleText"
         }
       }
     }
