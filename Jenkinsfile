@@ -20,8 +20,7 @@ pipeline {
     }
     stage('check failure in console ') {
       steps {
-        script {
-          // publish html
+
         publishHTML target: [
             allowMissing: false,
             alwaysLinkToLastBuild: false,
@@ -30,7 +29,7 @@ pipeline {
             reportFiles: 'index.html',
             reportName: 'RCov Report'
           ]
-        }
+
       }
     }
   }
