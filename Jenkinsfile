@@ -15,7 +15,7 @@ pipeline {
     stage('read console') {
       steps {
         script {
-          echo "${BUILD_URL}/consoleText"
+          echo "${BUILD_URL}consoleText"
         }
       }
     }
