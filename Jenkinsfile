@@ -21,7 +21,7 @@ pipeline {
     }
     stage('check failure in console ') {
       steps {
-        echo "${BUILD_URL}/consoleText"
+        echo "${BUILD_URL}consoleText"
       }
     }
     stage('CheckLog') {
