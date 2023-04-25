@@ -27,7 +27,7 @@ pipeline {
     stage('CheckLog') {
       steps {
         script {
-          sh "find -name $GIT_URL ${BUILD_URL}console"
+          sh "find -name 'GIT_URL' ${BUILD_URL}console"
         }
       }
     }
