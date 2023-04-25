@@ -19,17 +19,5 @@ pipeline {
         }
       }
     }
-    stage('check failure in console ') {
-      steps {
-        echo "${BUILD_URL}console"
-      }
-    }
-    stage('CheckLog') {
-      steps {
-        script {
-          sh "find -name 'GIT_URL' ${BUILD_URL}console"
-        }
-      }
-    }
   }
 }
