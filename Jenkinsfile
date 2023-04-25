@@ -15,19 +15,19 @@ pipeline {
     stage('read console') {
       steps {
         script {
-          echo "${BUILD_URL}consoleText"
+          echo "${BUILD_URL}console"
         }
       }
     }
     stage('check failure in console ') {
       steps {
-        echo "${BUILD_URL}consoleText"
+        echo "${BUILD_URL}console"
       }
     }
     stage('CheckLog') {
       steps {
         script {
-          sh "/opt/homebrew/bin/wget -q --no-check-certificate -O build.log ${BUILD_URL}consoleText"
+          sh "wget -q --no-check-certificate -O build.log ${BUILD_URL}console"
         }
       }
     }
