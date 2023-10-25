@@ -43,7 +43,7 @@ pipeline {
           // Activate virtual environment before running Python scripts
           sh 'source venv/bin/activate'
           // Run Python script
-          sh 'python3 /pythonscripts/HelloWorld.py'
+          sh 'python3 pythonscripts/HelloWorld.py'
         }
       }
     }
