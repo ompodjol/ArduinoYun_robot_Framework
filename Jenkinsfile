@@ -19,12 +19,25 @@ pipeline {
         }
       }
     }
-    stage('compile Hello') {
-      steps {
-        script {
-          sh "pwd"
-          sh "ls -al"
-          sh "g++ HelloWorld.cpp"
+    stage('compile cpp hello') {
+      dir('cplusplus') {
+        steps {
+          script {
+            sh "pwd"
+            sh "ls -al"
+            sh "g++ HelloWorld.cpp"
+          }
+        }
+      }
+    }
+    stage('run cpp hello') {
+      dir('cplusplus') {
+        steps {
+          script {
+            sh "pwd"
+            sh "ls -al"
+            sh "./a.out"
+          }
         }
       }
     }
