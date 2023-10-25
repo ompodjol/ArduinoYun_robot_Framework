@@ -47,7 +47,7 @@ pipeline {
         }
       }
     }
-    stage('compile cpp hello') {
+    stage('Compile CPP Hello') {
       steps {
         dir('cplusplus') {
           script {
@@ -58,7 +58,7 @@ pipeline {
         }
       }
     }
-    stage('run cpp hello') {
+    stage('Run CPP Hello') {
       steps {
         dir('cplusplus') {
           script {
