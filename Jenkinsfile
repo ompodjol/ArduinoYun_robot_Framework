@@ -20,8 +20,8 @@ pipeline {
       }
     }
     stage('compile cpp hello') {
-      dir('cplusplus') {
-        steps {
+      steps {
+        dir('cplusplus') {
           script {
             sh "pwd"
             sh "ls -al"
