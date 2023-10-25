@@ -19,14 +19,5 @@ pipeline {
         }
       }
     }
-    stage('compile Hello') {
-      steps {
-        script {
-          sh "pwd"
-          sh "ls -al"
-          sh "gcc HelloWorld.cpp"
-        }
-      }
-    }
   }
 }
