@@ -73,7 +73,7 @@ pipeline {
       steps {
         script {
           // Run the Robot Framework test suite
-          sh 'robot test_suite.robot'
+          sh 'robot --loglevel TRACE robots/test_suite.robot'
         }
       }
     }
