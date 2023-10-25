@@ -24,7 +24,7 @@ pipeline {
         script {
           sh "pwd"
           sh "ls -al"
-          sh "gcc HelloWorld.cpp"
+          sh "g++ HelloWorld.cpp"
         }
       }
     }
