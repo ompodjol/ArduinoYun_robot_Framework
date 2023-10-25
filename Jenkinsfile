@@ -3,16 +3,20 @@ import hudson.model.*
 
 pipeline {
   agent any
+
+  environment {
+    PATH = "/opt/homebrew/bin/python3"
+  }
   
   stages {
-    stage('read env') {
+    stage('Read ENV') {
       steps {
         script {
           echo sh(script: 'env|sort', returnStdout: true)
         }
       }
     }
-    stage('read console') {
+    stage('Read Console') {
       steps {
         script {
           echo "${BUILD_URL}console"
