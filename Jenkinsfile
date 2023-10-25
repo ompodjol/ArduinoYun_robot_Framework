@@ -43,7 +43,7 @@ pipeline {
           // Activate the virtual environment before running Python scripts
           sh 'source venv/bin/activate'
           // Run your Python script
-          sh 'python my_script.py'  // Replace with your Python script
+          sh 'python3 /pythonscripts/HelloWorld.py'  // Replace with your Python script
         }
       }
     }
