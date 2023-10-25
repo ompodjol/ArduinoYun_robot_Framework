@@ -19,6 +19,30 @@ pipeline {
         }
       }
     }
+    stage('Create Python Virtual Environment') {
+      steps {
+        script {
+          // Create a directory for the virtual environment
+          sh 'mkdir -p venv'
+          // Create a Python virtual environment using venv
+          sh 'python3 -m venv venv'
+          // Activate the virtual environment
+          sh 'source venv/bin/activate'
+          // Install necessary Python packages in the virtual environment
+          sh 'pip install -r requirements.txt'  // Replace with your requirements file
+         }
+      }
+    }
+    stage('Run Python Script') {
+      steps {
+        script {
+          // Activate the virtual environment before running Python scripts
+          sh 'source venv/bin/activate'
+          // Run your Python script
+          sh 'python my_script.py'  // Replace with your Python script
+        }
+      }
+    }
     stage('compile cpp hello') {
       steps {
         dir('cplusplus') {
@@ -45,7 +69,7 @@ pipeline {
       steps {
         script {
           // Run the Robot Framework test suite
-          sh 'robot my_test_suite.robot'
+          sh 'robot test_suite.robot'
         }
       }
     }
