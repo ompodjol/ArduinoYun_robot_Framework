@@ -5,7 +5,7 @@ pipeline {
   agent any
 
   environment {
-    PATH = "/opt/homebrew/bin/python3"
+    PATH = "/opt/homebrew/bin/:$PATH"
   }
   
   stages {
