@@ -1,4 +1,7 @@
+*** Settings ***
+Library    Process
+
 *** Test Cases ***
-Display Hello and Check
-    Log To Console    Hello
-    Should Contain    ${LOG MESSAGE}    Hello
+Run HelloWorld Python Script
+    ${output} =    Run Process python3 HelloWorld.py
+    Should Contain    ${output}    Hello World!
