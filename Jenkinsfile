@@ -44,8 +44,6 @@ pipeline {
     stage('Run Robot Framework Tests') {
       steps {
         script {
-          // Install Python and Robot Framework
-          sh 'pip install robotframework'
           // Run the Robot Framework test suite
           sh 'robot my_test_suite.robot'
         }
