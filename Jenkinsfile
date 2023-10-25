@@ -33,17 +33,17 @@ pipeline {
           // Activate the virtual environment
           sh 'source venv/bin/activate'
           // Install necessary Python packages in the virtual environment
-          sh 'pip install -r requirements.txt'  // Replace with your requirements file
+          sh 'pip install -r requirements.txt'
          }
       }
     }
     stage('Run Python Script') {
       steps {
         script {
-          // Activate the virtual environment before running Python scripts
+          // Activate virtual environment before running Python scripts
           sh 'source venv/bin/activate'
-          // Run your Python script
-          sh 'python3 /pythonscripts/HelloWorld.py'  // Replace with your Python script
+          // Run Python script
+          sh 'python3 /pythonscripts/HelloWorld.py'
         }
       }
     }
