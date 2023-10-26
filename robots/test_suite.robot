@@ -17,10 +17,10 @@ Ping ArduinoYun IP
 
 Telnet ArduinoYun IP
   [tags]  Sanity
-    Open Connection    192.168.0.162   22  # Replace with the appropriate hostname and port number
+    Open Connection    192.168.0.162  # Replace with the appropriate hostname and port number
     ${result}    Login    root    arduino  # Replace with your Telnet login credentials
     Should Be True    ${result}  Connected successfully
     Write    hostname  # Replace with a command you want to execute
     ${output}    Read Until Prompt
-    Should Contain    ${output}    expected_output  # Replace with the expected output
+    Should Contain    ${output}    ArduinoYun  # Replace with the expected output
     Close Connection
