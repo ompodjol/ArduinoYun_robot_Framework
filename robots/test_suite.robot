@@ -1,7 +1,7 @@
 *** Settings ***
 Library    Process
 Library    OperatingSystem
-Library    Telnet
+Library    SSHLibrary
 
 *** Test Cases ***
 Run HelloWorld Python Script
@@ -15,12 +15,11 @@ Ping ArduinoYun IP
     Should Be Equal As Strings    ${ping_result.rc}    0   # Check if return code is 0, indicating successful ping
     Should Contain    ${ping_result.stdout}    64 bytes from 192.168.0.162
 
-Telnet ArduinoYun IP
+SSH ArduinoYun and Get Hostname
   [tags]  Sanity
-    Open Connection    192.168.0.162  # Replace with the appropriate hostname and port number
-    ${result}    Login    root    arduino  # Replace with your Telnet login credentials
-    Should Be True    ${result}  Connected successfully
-    Write    hostname  # Replace with a command you want to execute
-    ${output}    Read Until Prompt
-    Should Contain    ${output}    ArduinoYun  # Replace with the expected output
-    Close Connection
+    Open Connection    192.168.0.162
+    Login    root    arduino    delay=1
+    Read Until    root@ArduinoYun:~# 
+    ${hostname_output}    Execute Command    hostname
+    Log    Hostname: ${hostname_output}
+    Close All Connections
