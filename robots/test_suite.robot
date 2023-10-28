@@ -3,6 +3,11 @@ Library    Process
 Library    OperatingSystem
 Library    SSHLibrary
 
+*** Variables ***
+${ARDUINOYUN_IP}        192.168.0.162
+${USERNAME}             root
+${PASSWORD}             arduino
+
 *** Test Cases ***
 Run HelloWorld Python Script
   [tags]  Sanity
@@ -16,10 +21,10 @@ Ping ArduinoYun IP
     Should Contain    ${ping_result.stdout}    64 bytes from 192.168.0.162
 
 SSH ArduinoYun and Get Hostname
-  [tags]  Sanity
-    Open Connection    192.168.0.162
-    Login    root    arduino    delay=1
-    Read Until    root@ArduinoYun:~# 
+  [tags]  Sanity    SSH
+    Open Connection    ${ARDUINOYUN_IP}
+    Login    ${USERNAME}    ${PASSWORD}     delay=1
     ${hostname_output}    Execute Command    hostname
     Log    Hostname: ${hostname_output}
+    Should Be Equal     ${hostname_output}     ArduinoYun
     Close All Connections
