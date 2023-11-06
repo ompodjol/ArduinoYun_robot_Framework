@@ -76,7 +76,7 @@ pipeline {
       steps {
         script {
           sh """
-            source venv/bin/activate
+            source 'venv/bin/activate'
             // Run the Robot Framework test suite
             pwd
             ls -al
