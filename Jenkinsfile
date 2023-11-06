@@ -86,6 +86,21 @@ pipeline {
           """
         }
       }
+      post {
+        always {
+          step([
+            $class              : 'RobotPublisher',
+            outputPath          : 'test_results',
+            outputFileName      : "output.xml",
+            reportFileName      : 'report.html',
+            logFileName         : 'log.html',
+            disableArchiveOutput: false,
+            passThreshold       : 95.0,
+            unstableThreshold   : 95.0,
+            otherFiles          : "**/*.png",
+          ])
+        }
+      }
     }
   }
 }
