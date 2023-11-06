@@ -28,3 +28,12 @@ SSH ArduinoYun and Get Hostname
     Log    Hostname: ${hostname_output}
     Should Be Equal     ${hostname_output}     ArduinoYun
     Close All Connections
+
+Check uname ArduinoYun
+  [tags]  Sanity    SSH
+    Open Connection    ${ARDUINOYUN_IP}
+    Login    ${USERNAME}    ${PASSWORD}     delay=1
+    ${uname_output}    Execute Command    uname -a
+    Log    Hostname: ${uname_output}
+    Should Be Equal     ${uname_output}     Linux ArduinoYun 3.3.8 #1 Fri Apr 11 07:16:38 CEST 2014 mips GNU/Linux
+    Close All Connections
