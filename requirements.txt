@@ -1,4 +1,4 @@
-paramiko
+paramiko==3.3.1
 pexpect==4.8.0
 robotframework
 robotframework-sshlibrary
