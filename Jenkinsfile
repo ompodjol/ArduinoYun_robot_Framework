@@ -80,6 +80,8 @@ pipeline {
           sh """
             source venv/bin/activate
             python --version
+            pip install -r requirements.txt
+            python --version
             robot --loglevel TRACE robots/test_suite.robot
           """
         }
