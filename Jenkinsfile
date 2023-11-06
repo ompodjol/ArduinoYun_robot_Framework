@@ -35,6 +35,7 @@ pipeline {
             source venv/bin/activate
             // Install necessary Python packages in the virtual environment
             pip install -r requirements.txt
+          """
          }
       }
     }
@@ -76,10 +77,9 @@ pipeline {
       steps {
         script {
           sh """
-            source 'venv/bin/activate'
+            source venv/bin/activate
+            python --version
             // Run the Robot Framework test suite
-            pwd
-            ls -al
             robot --loglevel TRACE robots/test_suite.robot
           """
         }
