@@ -80,7 +80,6 @@ pipeline {
             // Run the Robot Framework test suite
             pwd
             ls -al
-            python --version 
             robot --loglevel TRACE robots/test_suite.robot
           """
         }
