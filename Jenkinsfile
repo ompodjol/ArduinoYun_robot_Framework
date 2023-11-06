@@ -90,7 +90,7 @@ pipeline {
         always {
           step([
             $class              : 'RobotPublisher',
-            outputPath          : 'test_results',
+            outputPath          : '/Users/jollyjae/.jenkins/workspace/ArduinoYun_develop',
             outputFileName      : "output.xml",
             reportFileName      : 'report.html',
             logFileName         : 'log.html',
