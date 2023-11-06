@@ -74,6 +74,9 @@ pipeline {
         script {
           sh 'source venv/bin/activate'
           // Run the Robot Framework test suite
+          sh 'pwd'
+          sh 'ls -al'
+          sh 'python --version' 
           sh 'robot --loglevel TRACE robots/test_suite.robot'
         }
       }
