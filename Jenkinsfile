@@ -27,13 +27,14 @@ pipeline {
       steps {
         script {
           // Create a directory for the virtual environment
-          sh 'mkdir -p venv'
-          // Create a Python virtual environment using venv
-          sh 'python3 -m venv venv'
-          // Activate the virtual environment
-          sh 'source venv/bin/activate'
-          // Install necessary Python packages in the virtual environment
-          sh 'pip install -r requirements.txt'
+          sh """
+            mkdir -p venv
+            // Create a Python virtual environment using venv
+            python3 -m venv venv
+            // Activate the virtual environment
+            source venv/bin/activate
+            // Install necessary Python packages in the virtual environment
+            pip install -r requirements.txt
          }
       }
     }
@@ -41,9 +42,11 @@ pipeline {
       steps {
         script {
           // Activate virtual environment before running Python scripts
-          sh 'source venv/bin/activate'
-          // Run Python script
-          sh 'python3 pythonscripts/HelloWorld.py'
+          sh """
+            source venv/bin/activate
+            // Run Python script
+            python3 pythonscripts/HelloWorld.py
+          """
         }
       }
     }
@@ -72,12 +75,14 @@ pipeline {
     stage('Run Robot Framework Tests') {
       steps {
         script {
-          sh 'source venv/bin/activate'
-          // Run the Robot Framework test suite
-          sh 'pwd'
-          sh 'ls -al'
-          sh 'python --version' 
-          sh 'robot --loglevel TRACE robots/test_suite.robot'
+          sh """
+            source venv/bin/activate'
+            // Run the Robot Framework test suite
+            pwd
+            ls -al
+            python --version 
+            robot --loglevel TRACE robots/test_suite.robot
+          """
         }
       }
     }
