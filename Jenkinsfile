@@ -27,13 +27,15 @@ pipeline {
       steps {
         script {
           // Create a directory for the virtual environment
-          sh 'mkdir -p venv'
           // Create a Python virtual environment using venv
-          sh 'python3 -m venv venv'
-          // Activate the virtual environment
-          sh 'source venv/bin/activate'
-          // Install necessary Python packages in the virtual environment
-          sh 'pip install -r requirements.txt'
+            // Activate the virtual environment
+            // Install necessary Python packages in the virtual environment
+          sh """
+            mkdir -p venv
+            python3 -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
+          """
          }
       }
     }
@@ -41,9 +43,11 @@ pipeline {
       steps {
         script {
           // Activate virtual environment before running Python scripts
-          sh 'source venv/bin/activate'
           // Run Python script
-          sh 'python3 pythonscripts/HelloWorld.py'
+          sh """
+            source venv/bin/activate
+            python3 pythonscripts/HelloWorld.py
+          """
         }
       }
     }
@@ -73,7 +77,28 @@ pipeline {
       steps {
         script {
           // Run the Robot Framework test suite
-          sh 'robot --loglevel TRACE robots/test_suite.robot'
+          sh """
+            source venv/bin/activate
+            python --version
+            pip install -r requirements.txt
+            python --version
+            robot --loglevel TRACE robots/test_suite.robot
+          """
+        }
+      }
+      post {
+        always {
+          step([
+            $class              : 'RobotPublisher',
+            outputPath          : '/Users/jollyjae/.jenkins/workspace/ArduinoYun_develop',
+            outputFileName      : "output.xml",
+            reportFileName      : 'report.html',
+            logFileName         : 'log.html',
+            disableArchiveOutput: false,
+            passThreshold       : 95.0,
+            unstableThreshold   : 95.0,
+            otherFiles          : "**/*.png",
+          ])
         }
       }
     }
