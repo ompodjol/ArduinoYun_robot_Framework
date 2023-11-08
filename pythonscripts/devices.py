@@ -16,13 +16,16 @@ class Devices:
     def get_device_info(self):
         print(f"Device Info => Device Name: {self.device_name}, ip Address: {self.ip_address}")
         
-            
-    def set_device_name(self, device_name):
-        self.device_name = device_name
+    @property    
+    def device_name(self):
+        return self._device_name
         
-        
-    def get_device_name(self):
-        return self.device_name
+    @device_name.setter    
+    def device_name(self, new_device_name):
+        if isinstance(new_device_name, str):
+            self._device_name = new_device_name
+        else:
+            print("Name must be a string.")
         
     
     def set_username(self, username):
