@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.3 on darwin)" generated="20231106 22:54:18.724" rpa="false" schemaversion="4">
+<suite id="s1" name="Test Suite" source="/Users/jollyjae/github/ArduinoYun_robot_Framework/robots/test_suite.robot">
+<test id="s1-t1" name="Run HelloWorld Python Script" line="12">
+<kw name="Run Process" library="Process">
+<var>${output}</var>
+<arg>python3</arg>
+<arg>pythonscripts/HelloWorld.py</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20231106 22:54:19.592" level="TRACE">Arguments: [ 'python3' | 'pythonscripts/HelloWorld.py' ]</msg>
+<msg timestamp="20231106 22:54:19.592" level="INFO">Starting process:
+python3 pythonscripts/HelloWorld.py</msg>
+<msg timestamp="20231106 22:54:19.592" level="DEBUG">Process configuration:
+cwd:     /Users/jollyjae/github/ArduinoYun_robot_Framework
+shell:   False
+stdout:  PIPE
+stderr:  PIPE
+stdin:   PIPE
+alias:   None
+env:     None</msg>
+<msg timestamp="20231106 22:54:19.598" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20231106 22:54:19.642" level="INFO">Process completed.</msg>
+<msg timestamp="20231106 22:54:19.642" level="TRACE">Return: &lt;robot.libraries.Process.ExecutionResult object at 0x102d50ad0&gt;</msg>
+<msg timestamp="20231106 22:54:19.643" level="INFO">${output} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20231106 22:54:19.591" endtime="20231106 22:54:19.643"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${output.stdout}</arg>
+<arg>Hello World!</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<msg timestamp="20231106 22:54:19.644" level="TRACE">Arguments: [ 'Hello World!' | 'Hello World!' ]</msg>
+<msg timestamp="20231106 22:54:19.644" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20231106 22:54:19.643" endtime="20231106 22:54:19.644"/>
+</kw>
+<tag>Sanity</tag>
+<status status="PASS" starttime="20231106 22:54:19.591" endtime="20231106 22:54:19.644"/>
+</test>
+<test id="s1-t2" name="Ping ArduinoYun IP" line="17">
+<kw name="Run Process" library="Process">
+<var>${ping_result}</var>
+<arg>ping -c5 192.168.0.162</arg>
+<arg>shell=True</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20231106 22:54:19.645" level="TRACE">Arguments: [ 'ping -c5 192.168.0.162' | shell='True' ]</msg>
+<msg timestamp="20231106 22:54:19.645" level="INFO">Starting process:
+ping -c5 192.168.0.162</msg>
+<msg timestamp="20231106 22:54:19.645" level="DEBUG">Process configuration:
+cwd:     /Users/jollyjae/github/ArduinoYun_robot_Framework
+shell:   True
+stdout:  PIPE
+stderr:  PIPE
+stdin:   PIPE
+alias:   None
+env:     None</msg>
+<msg timestamp="20231106 22:54:19.648" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20231106 22:54:23.689" level="INFO">Process completed.</msg>
+<msg timestamp="20231106 22:54:23.690" level="TRACE">Return: &lt;robot.libraries.Process.ExecutionResult object at 0x104270950&gt;</msg>
+<msg timestamp="20231106 22:54:23.691" level="INFO">${ping_result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20231106 22:54:19.644" endtime="20231106 22:54:23.691"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${ping_result.rc}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20231106 22:54:23.693" level="TRACE">Arguments: [ 0 | '0' ]</msg>
+<msg timestamp="20231106 22:54:23.694" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20231106 22:54:23.694" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20231106 22:54:23.692" endtime="20231106 22:54:23.694"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${ping_result.stdout}</arg>
+<arg>64 bytes from 192.168.0.162</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<msg timestamp="20231106 22:54:23.694" level="TRACE">Arguments: [ 'PING 192.168.0.162 (192.168.0.162): 56 data bytes\n64 bytes from 192.168.0.162: icmp_seq=0 ttl=64 time=21.586 ms\n64 bytes from 192.168.0.162: icmp_seq=1 ttl=64 time=19.922 ms\n64 bytes from 192.168.0.162: icmp_seq=2 ttl=64 time=21.688 ms\n64 bytes from 192.168.0.162: icmp_seq=3 ttl=64 time=16.746 ms\n64 bytes from 192.168.0.162: icmp_seq=4 ttl=64 time=18.930 ms\n\n--- 192.168.0.162 ping statistics ---\n5 packets transmitted, 5 packets received, 0.0% packet loss\nround-trip min/avg/max/stddev = 16.746/19.774/21.688/1.836 ms' | '64 bytes from 192.168.0.162' ]</msg>
+<msg timestamp="20231106 22:54:23.695" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20231106 22:54:23.694" endtime="20231106 22:54:23.695"/>
+</kw>
+<tag>Sanity</tag>
+<status status="PASS" starttime="20231106 22:54:19.644" endtime="20231106 22:54:23.695"/>
+</test>
+<test id="s1-t3" name="SSH ArduinoYun and Get Hostname" line="23">
+<kw name="Open Connection" library="SSHLibrary">
+<arg>${ARDUINOYUN_IP}</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<msg timestamp="20231106 22:54:23.697" level="TRACE">Arguments: [ '192.168.0.162' ]</msg>
+<msg timestamp="20231106 22:54:23.697" level="TRACE">Return: 1</msg>
+<status status="PASS" starttime="20231106 22:54:23.696" endtime="20231106 22:54:23.697"/>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<arg>delay=1</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<msg timestamp="20231106 22:54:23.698" level="TRACE">Arguments: [ 'root' | 'arduino' | delay='1' ]</msg>
+<msg timestamp="20231106 22:54:23.698" level="INFO">Logging into '192.168.0.162:22' as 'root'.</msg>
+<msg timestamp="20231106 22:54:26.309" level="DEBUG">Adding ssh-rsa host key for 192.168.0.162: b'b372a395e5230fbdfbe430317c3ce4a5'</msg>
+<msg timestamp="20231106 22:54:26.478" level="DEBUG">[chan 0] Max packet in: 32768 bytes</msg>
+<msg timestamp="20231106 22:54:28.540" level="INFO">Read output: 
+
+BusyBox v1.19.4 (2014-04-10 11:08:41 CEST) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+
+
+root@ArduinoYun:~#</msg>
+<msg timestamp="20231106 22:54:28.541" level="TRACE">Return: "\r\n\r\nBusyBox v1.19.4 (2014-04-10 11:08:41 CEST) built-in shell (ash)\r\nEnter 'help' for a list of built-in commands.\r\n\r\n  _______                     ________        __\r\n |       |.-----.-----.-----.|  |  |  |.----.|  |_\r\n |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|\r\n |_______||   __|_____|__|__||________||__|  |____|\r\n          |__| W I R E L E S S   F R E E D O M\r\n -----------------------------------------------------\r\n\r\n\r\nroot@ArduinoYun:~# "</msg>
+<status status="PASS" starttime="20231106 22:54:23.697" endtime="20231106 22:54:28.541"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<var>${hostname_output}</var>
+<arg>hostname</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20231106 22:54:28.542" level="TRACE">Arguments: [ 'hostname' ]</msg>
+<msg timestamp="20231106 22:54:28.542" level="INFO">Executing command 'hostname'.</msg>
+<msg timestamp="20231106 22:54:28.543" level="DEBUG">[chan 1] Max packet in: 32768 bytes</msg>
+<msg timestamp="20231106 22:54:28.608" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20231106 22:54:28.608" level="TRACE">Return: 'ArduinoYun'</msg>
+<msg timestamp="20231106 22:54:28.608" level="INFO">${hostname_output} = ArduinoYun</msg>
+<status status="PASS" starttime="20231106 22:54:28.542" endtime="20231106 22:54:28.608"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Hostname: ${hostname_output}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231106 22:54:28.609" level="TRACE">Arguments: [ 'Hostname: ArduinoYun' ]</msg>
+<msg timestamp="20231106 22:54:28.609" level="INFO">Hostname: ArduinoYun</msg>
+<msg timestamp="20231106 22:54:28.610" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20231106 22:54:28.609" endtime="20231106 22:54:28.610"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${hostname_output}</arg>
+<arg>ArduinoYun</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20231106 22:54:28.610" level="TRACE">Arguments: [ 'ArduinoYun' | 'ArduinoYun' ]</msg>
+<msg timestamp="20231106 22:54:28.610" level="DEBUG">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20231106 22:54:28.610" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20231106 22:54:28.610" endtime="20231106 22:54:28.610"/>
+</kw>
+<kw name="Close All Connections" library="SSHLibrary">
+<doc>Closes all open connections.</doc>
+<msg timestamp="20231106 22:54:28.610" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20231106 22:54:28.611" level="DEBUG">[chan 0] EOF sent (0)</msg>
+<msg timestamp="20231106 22:54:28.611" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20231106 22:54:28.610" endtime="20231106 22:54:28.611"/>
+</kw>
+<tag>Sanity</tag>
+<tag>SSH</tag>
+<status status="PASS" starttime="20231106 22:54:23.695" endtime="20231106 22:54:28.612"/>
+</test>
+<status status="PASS" starttime="20231106 22:54:18.724" endtime="20231106 22:54:28.613"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0" skip="0">Sanity</stat>
+<stat pass="1" fail="0" skip="0">SSH</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Test Suite">Test Suite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
