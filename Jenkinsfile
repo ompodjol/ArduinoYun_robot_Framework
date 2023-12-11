@@ -12,6 +12,8 @@ pipeline {
   stages {
     stage('Read ENV') {
       steps {
+        cleanWs()
+        checkout scm
         script {
           echo sh(script: 'env|sort', returnStdout: true)
         }
