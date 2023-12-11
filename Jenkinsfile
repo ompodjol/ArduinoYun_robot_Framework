@@ -77,12 +77,12 @@ pipeline {
     stage('Run Robot Framework Tests') {
       steps {
         script {
-          sh " cp ${CREDENTIALS} . "
           // Run the Robot Framework test suite
           sh """
             source venv/bin/activate
             python --version
             pip install -r requirements.txt
+            cp ${CREDENTIALS} .
             python --version
             robot --loglevel TRACE robots/test_suite.robot
           """
