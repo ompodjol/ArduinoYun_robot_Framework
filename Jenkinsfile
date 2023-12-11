@@ -6,7 +6,7 @@ pipeline {
 
   environment {
     PATH = "/Library/Frameworks/Python.framework/Versions/3.10/bin/:/opt/homebrew/bin/:$PATH"
-    CREDENTIALS = "/Users/jollyjae/credentials.py"
+    CREDENTIALS = "/home/jollyjae/credentials.py"
   }
   
   stages {
@@ -24,6 +24,7 @@ pipeline {
         }
       }
     }
+    /*
     stage('Create Python Virtual Environment') {
       steps {
         script {
@@ -35,7 +36,7 @@ pipeline {
             // virtualenv venv
             // pip install -r requirements.txt
           sh """
-            source venv/bin/activate
+            source /home/jollyjae/venv/bin/activate
           """
          }
       }
@@ -74,15 +75,12 @@ pipeline {
        }
       }
     }
+    */
     stage('Run Robot Framework Tests') {
       steps {
         script {
           // Run the Robot Framework test suite
           sh """
-            source venv/bin/activate
-            python --version
-            pip install -r requirements.txt
-            pwd
             cp ${CREDENTIALS} robots/.
             ls -al
             python --version
