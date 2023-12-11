@@ -32,6 +32,8 @@ pipeline {
             // Activate the virtual environment
             // Install necessary Python packages in the virtual environment
           sh """
+            pwd
+            ls -al
             source venv/bin/activate
             pip install -r requirements.txt
           """
