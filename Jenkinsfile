@@ -32,7 +32,7 @@ pipeline {
             // Activate the virtual environment
             // Install necessary Python packages in the virtual environment
           sh """
-            sudo apt install python3-virtualenv
+            apt install python3-virtualenv
             virtualenv venv
             source venv/bin/activate
             pip install -r requirements.txt --break-system-packages
