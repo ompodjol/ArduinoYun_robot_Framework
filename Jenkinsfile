@@ -5,7 +5,7 @@ pipeline {
   agent any
 
   environment {
-    PATH = "/Library/Frameworks/Python.framework/Versions/3.10/bin/:/opt/homebrew/bin/:$PATH"
+    PATH = "/home/jollyjae/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:$PATH"
     CREDENTIALS = "/home/jollyjae/credentials.py"
   }
   
