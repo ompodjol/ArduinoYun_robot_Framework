@@ -12,8 +12,6 @@ pipeline {
   stages {
     stage('Read ENV') {
       steps {
-        cleanWs()
-        checkout scm
         script {
           echo sh(script: 'env|sort', returnStdout: true)
         }
@@ -34,7 +32,6 @@ pipeline {
             // Activate the virtual environment
             // Install necessary Python packages in the virtual environment
           sh """
-            sudo su
             mkdir -p venv
             python3 -m venv venv
             source venv/bin/activate
@@ -84,7 +81,6 @@ pipeline {
         script {
           // Run the Robot Framework test suite
           sh """
-            sudo su
             cp ${CREDENTIALS} robots/.
             robot --loglevel=TRACE robots/test_suite.robot
           """
