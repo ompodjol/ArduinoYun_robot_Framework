@@ -24,7 +24,6 @@ pipeline {
         }
       }
     }
-    /*
     stage('Create Python Virtual Environment') {
       steps {
         script {
@@ -32,15 +31,17 @@ pipeline {
           // Create a Python virtual environment using venv
             // Activate the virtual environment
             // Install necessary Python packages in the virtual environment
-            // apt install python3-virtualenv
-            // virtualenv venv
-            // pip install -r requirements.txt
           sh """
-            source /home/jollyjae/venv/bin/activate
+            sudo su
+            mkdir -p venv
+            python3 -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
           """
          }
       }
     }
+    /*
     stage('Run Python Script') {
       steps {
         script {
@@ -81,12 +82,9 @@ pipeline {
         script {
           // Run the Robot Framework test suite
           sh """
-            pwd
-            ls -al
+            sudo su
             cp ${CREDENTIALS} robots/.
-            ls -al
-            python --version
-            robot --loglevel TRACE robots/test_suite.robot
+            robot --loglevel=TRACE robots/test_suite.robot
           """
         }
       }
