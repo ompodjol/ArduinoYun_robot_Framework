@@ -31,13 +31,15 @@ pipeline {
           // Create a Python virtual environment using venv
             // Activate the virtual environment
             // Install necessary Python packages in the virtual environment
-          sh """
-            pwd
-            ls -al
-            source venv/bin/activate
-            pip install -r requirements.txt
-          """
-         }
+          dir('ArduinoYun_robot_Framework') {
+            sh """
+              pwd
+              ls -al
+              source venv/bin/activate
+              pip install -r requirements.txt
+            """
+          }
+        }
       }
     }
     /*
