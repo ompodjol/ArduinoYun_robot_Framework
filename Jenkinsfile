@@ -81,6 +81,8 @@ pipeline {
         script {
           // Run the Robot Framework test suite
           sh """
+            pwd
+            ls -al
             cp ${CREDENTIALS} robots/.
             ls -al
             python --version
