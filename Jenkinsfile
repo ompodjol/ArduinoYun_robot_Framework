@@ -82,7 +82,9 @@ pipeline {
             source venv/bin/activate
             python --version
             pip install -r requirements.txt
-            cp ${CREDENTIALS} .
+            pwd
+            cp ${CREDENTIALS} robots/.
+            ls -al
             python --version
             robot --loglevel TRACE robots/test_suite.robot
           """
