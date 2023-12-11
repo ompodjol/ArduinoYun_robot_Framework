@@ -6,6 +6,7 @@ pipeline {
 
   environment {
     PATH = "/Library/Frameworks/Python.framework/Versions/3.10/bin/:/opt/homebrew/bin/:$PATH"
+    CREDENTIALS = "/Users/jollyjae/credentials.py"
   }
   
   stages {
@@ -76,6 +77,7 @@ pipeline {
     stage('Run Robot Framework Tests') {
       steps {
         script {
+          sh " cp ${CREDENTIALS} .
           // Run the Robot Framework test suite
           sh """
             source venv/bin/activate
