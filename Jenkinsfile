@@ -31,7 +31,7 @@ pipeline {
           // Create a Python virtual environment using venv
             // Activate the virtual environment
             // Install necessary Python packages in the virtual environment
-          dir('ArduinoYun_robot_Framework') {
+          dir("${WORKSPACE}") {
             sh """
               pwd
               ls -al
