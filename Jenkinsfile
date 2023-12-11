@@ -77,7 +77,7 @@ pipeline {
     stage('Run Robot Framework Tests') {
       steps {
         script {
-          sh " cp ${CREDENTIALS} .
+          sh " cp ${CREDENTIALS} . "
           // Run the Robot Framework test suite
           sh """
             source venv/bin/activate
