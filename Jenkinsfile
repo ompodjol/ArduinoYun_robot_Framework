@@ -31,11 +31,11 @@ pipeline {
           // Create a Python virtual environment using venv
             // Activate the virtual environment
             // Install necessary Python packages in the virtual environment
+            // apt install python3-virtualenv
           sh """
-            apt install python3-virtualenv
             virtualenv venv
             source venv/bin/activate
-            pip install -r requirements.txt --break-system-packages
+            pip install -r requirements.txt
           """
          }
       }
