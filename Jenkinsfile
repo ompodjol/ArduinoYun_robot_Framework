@@ -5,7 +5,7 @@ pipeline {
   agent any
 
   environment {
-    PATH = "/usr/bin/python34:/usr/bin:/home/jollyjae/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:$PATH"
+    PATH = "/usr/bin/python3:/usr/bin:/home/jollyjae/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:$PATH"
     CREDENTIALS = "/home/jollyjae/credentials.py"
   }
   
