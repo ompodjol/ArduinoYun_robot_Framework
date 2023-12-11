@@ -4,13 +4,14 @@ Library    OperatingSystem
 Library    SSHLibrary
 Variables    credentials.py
 
-#*** Variables ***
+*** Variables ***
 #${ARDUINOYUN_IP}        192.168.0.162
 #${ARD_USERNAME}         root
 #${ARD_PASSWORD}         arduino
 
 #${RASPBERRYPI4_IP}        192.168.0.186
 #${RAS_USERNAME}           jollyjae
+${RAS_HOSTNAME}            Hostname: Linux raspberrypi4 6.1.0-rpi7-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.63-1+rpt1 (2023-11-24) aarch64 GNU/Linux
 
 
 *** Test Cases ***
@@ -64,8 +65,7 @@ Check uname Raspberrypi4
     Login    ${RAS_USERNAME}    ${RAS_PASSWORD}     delay=1
     ${uname_output}    Execute Command    uname -a
     Log    Hostname: ${uname_output}
-    Should Be Equal     ${uname_output}     Linux raspberrypi4 6.1.0-rpi4-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.54-1+rpt2 (2023-10-05) aarch64 GNU/Linux
-    Close All Connections
+    Should Be Equal     ${uname_output}     Hostname: ${RAS_HOSTNAME}
 
 Check uname Raspberrypi4 USING FILE VARIABLE
   [tags]  Sanity    SSH    Raspberrypi4
@@ -73,5 +73,5 @@ Check uname Raspberrypi4 USING FILE VARIABLE
     Login    ${RAS_USERNAME}    ${RAS_PASSWORD}     delay=1
     ${uname_output}    Execute Command    uname -a
     Log    Hostname: ${uname_output}
-    Should Be Equal     ${uname_output}     Linux raspberrypi4 6.1.0-rpi4-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.54-1+rpt2 (2023-10-05) aarch64 GNU/Linux
+    Should Be Equal     ${uname_output}     Hostname: ${RAS_HOSTNAME}
     Close All Connections
