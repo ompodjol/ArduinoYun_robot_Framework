@@ -32,8 +32,8 @@ pipeline {
             // Activate the virtual environment
             // Install necessary Python packages in the virtual environment
           sh """
-            mkdir -p venv
-            python3.11 -m venv venv
+            sudo apt install python3-virtualenv
+            virtualenv venv
             source venv/bin/activate
             pip install -r requirements.txt --break-system-packages
           """
